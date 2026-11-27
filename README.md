@@ -4,19 +4,19 @@
 
 What should a natural-products researcher be able to retrieve from a dataset? Each entry gives a question, the evidence needed to answer it, and what one answer contains. These are proposed retrieval requirements for expert review. The crate distributes the questions as plain text without a chemistry library, database or network connection.
 
-| Review set | Focus |
-| --- | --- |
-| [`smiles-rs`](questions/smiles-rs.md) | Identity and comparison of reported structures |
-| [`smarts`](questions/smarts.md) | Finding structural motifs |
-| [`molecular-formulas`](questions/molecular-formulas.md) | Composition, candidate formulas and spectral assignments |
-| [`elements`](questions/elements.md) | Element and isotope evidence |
+| Topic and question set | Related crate | Focus |
+| --- | --- | --- |
+| [SMILES](questions/smiles-rs.md) | [`smiles-rs`](https://github.com/earth-metabolome-initiative/smiles-rs) | Identity and comparison of reported structures |
+| [SMARTS](questions/smarts.md) | [`smarts-rs`](https://github.com/earth-metabolome-initiative/smarts-rs) | Finding structural motifs |
+| [Elements](questions/elements.md) | [`elements_rs`](https://github.com/earth-metabolome-initiative/elements-rs) | Element and isotope evidence |
+| [Molecular formulas (MF)](questions/molecular-formulas.md) | [`molecular-formulas`](https://github.com/earth-metabolome-initiative/molecular-formulas) | Composition, candidate formulas and spectral assignments |
 
 The questions suggest different indexes. [`CQ-0007`](questions/molecular-formulas.md#cq-0007) asks which analyte formulas contain fluorine. [`CQ-0014`](questions/molecular-formulas.md#cq-0014) also needs atom counts to retrieve formulas with at least four nitrogen atoms and no sulfur. [`CQ-0013`](questions/molecular-formulas.md#cq-0013) needs a link from an isolated product ion to the scan of its products. An index of peak masses alone cannot recover that acquisition history.
 
 ## Add a question
 
 1. Open **[Add a question](https://github.com/earth-metabolome-initiative/competency-questions/issues/new?template=question.yml)** on GitHub. Write your question in the title box. Try “Which formulas contain sodium?”
-2. Pick a topic. For this question, choose **Counting atoms in a formula**.
+2. Pick a topic. For this question, choose **Molecular formulas (MF)**.
 3. Give one example. You could write “Table salt (NaCl) should match. Water (H2O) should not.” Click **Create** to send it.
 
 GitHub gives your question a number and opens a **pull request**, a proposed change to the catalogue. Follow the link on your issue to see the question and its example. You can suggest changes there. When a reviewer accepts and merges the change, the question joins the catalogue and GitHub closes the issue. You do not need to install anything or choose an ID.

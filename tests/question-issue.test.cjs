@@ -9,14 +9,14 @@ const context = {
     repository: { default_branch: 'catalogue-draft' },
     issue: {
       number: 2, title: 'Which formulas contain sodium?',
-      body: '### Pick a topic\r\n\r\nCounting atoms in a formula\r\n\r\n### Give one example\r\n\r\nNaCl should match. HCl should not.',
+      body: '### Pick a topic\r\n\r\nMolecular formulas (MF)\r\n\r\n### Give one example\r\n\r\nNaCl should match. HCl should not.',
     },
   },
 };
 
 test('an unrelated issue, a legacy command issue or a malformed form makes no writes', async () => {
   for (const body of ['A typo in the README', 'Question set: `elements`\n\nWhich atoms?',
-    context.payload.issue.body.replace('Counting atoms in a formula', '../README'),
+    context.payload.issue.body.replace('Molecular formulas (MF)', '../README'),
     context.payload.issue.body.replace('NaCl should match. HCl should not.', '_No response_')]) {
     await submit({}, { ...context, payload: { ...context.payload, issue: { number: 2, title: 'Question?', body } } });
   }
