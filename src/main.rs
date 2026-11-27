@@ -56,7 +56,7 @@ fn add(set_name: &str, question: &str) -> io::Result<()> {
     let number = reserve_issue(set_name, question)?;
     let identifier = format!("CQ-{:04}", number + LEGACY_QUESTIONS);
     let link = format!("https://github.com/{REPOSITORY}/issues/{number}");
-    let entry = format!("\n## {identifier}\n\n{question}\n\n[Review question]({link})\n");
+    let entry = format!("\n## {question}\n\n### {identifier}\n\n[Review question]({link})\n");
     file.write_all(entry.as_bytes())
         .and_then(|()| file.sync_data())
         .map_err(|error| {

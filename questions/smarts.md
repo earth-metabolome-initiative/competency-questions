@@ -1,8 +1,8 @@
 # Finding structural motifs with `SMARTS`
 
-## CQ-0004
+## Which reported apigenin glycosides carry a sugar directly at C-6 or C-8, which carry one through the oxygen at C-7, and which carry both types of linkage?
 
-Which reported apigenin glycosides carry a sugar directly at C-6 or C-8, which carry one through the oxygen at C-7, and which carry both types of linkage?
+### CQ-0004
 
 **Scope.** `mixed` — SMARTS matching on molecular graphs and source reports. The unresolved list includes reports with no drawn attachment.
 
@@ -12,9 +12,9 @@ Which reported apigenin glycosides carry a sugar directly at C-6 or C-8, which c
 
 **Source.** [Olennikov et al.](https://pmc.ncbi.nlm.nih.gov/articles/PMC6918269/) report apigenin glycosides in *Gentiana*, including apigenin 7-O-glucoside, isovitexin and isovitexin 7-O-glucoside. The last compound gives a case where both linkage types matter.
 
-## CQ-0005
+## Which phenolics in my collection contain free catechol groups on at least two distinct rings, as in rosmarinic acid?
 
-Which phenolics in my collection contain free catechol groups on at least two distinct rings, as in rosmarinic acid?
+### CQ-0005
 
 **Scope.** `pure` — SMARTS matching on supplied molecular graphs. Distinct rings and oxygen pairs are identifiable from the matched atoms.
 
@@ -24,9 +24,9 @@ Which phenolics in my collection contain free catechol groups on at least two di
 
 **Sources.** [Gil et al.](https://pubmed.ncbi.nlm.nih.gov/23092164/) studied the two catechol moieties of rosmarinic acid and verbascoside. [Daylight’s `SMARTS` specification](https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html) defines aromatic atoms, hydrogen counts and charge constraints.
 
-## CQ-0006
+## Which structures in my natural-products collection contain both an epoxide and an α-methylene-γ-lactone in the same molecule, as parthenolide does?
 
-Which structures in my natural-products collection contain both an epoxide and an α-methylene-γ-lactone in the same molecule, as parthenolide does?
+### CQ-0006
 
 **Scope.** `pure` — SMARTS matching on supplied molecular graphs. Both motifs and their connected component are determined from the graph.
 

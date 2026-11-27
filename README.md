@@ -46,7 +46,7 @@ Both routes use the issue number plus 14 as the permanent question number, keepi
 
 ## Cite or amend a question
 
-Use [`CQ-0007`](questions/molecular-formulas.md#cq-0007) to discuss the fluorine question. Use `questions/molecular-formulas.md` to assign the whole set, or list individual IDs across sets. A question has one home even when answering it requires several crates. Search the checkout with `git grep --untracked -n '^## CQ-0007$' -- questions`.
+Each question is a heading with its permanent ID directly underneath. Use [`CQ-0007`](questions/molecular-formulas.md#cq-0007) to discuss the fluorine question, `questions/molecular-formulas.md` for the whole set, or a list of IDs across sets. To find an ID and its question locally, run `git grep --untracked -n -B 2 '^### CQ-0007$' -- questions`.
 
 For an exact handoff, give the recipient the repository location and full commit hash alongside the IDs or set path. In that checkout, `git show <commit>:questions/molecular-formulas.md` retrieves that revision of the set. A bare ID follows the question through wording edits. For an uncommitted draft, share the working files with the recipient.
 
