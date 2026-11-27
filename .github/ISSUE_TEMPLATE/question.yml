@@ -6,7 +6,7 @@ body:
       value: |
         **Write your question in the title box.** For example, “Which formulas contain sodium?” or “Which molecules contain a ring made of six carbon atoms?”
 
-        Pick a topic and give one example below. GitHub will give your question a number and ask someone to review it. No code needed.
+        Pick a topic, choose a scope and give one example. GitHub will give your question a number and ask someone to review it.
 
         Related crates: [`smiles-rs`](https://github.com/earth-metabolome-initiative/smiles-rs), [`smarts-rs`](https://github.com/earth-metabolome-initiative/smarts-rs), [`elements_rs`](https://github.com/earth-metabolome-initiative/elements-rs) and [`molecular-formulas`](https://github.com/earth-metabolome-initiative/molecular-formulas).
   - type: dropdown
@@ -18,6 +18,18 @@ body:
         - SMARTS
         - Elements
         - Molecular formulas (MF)
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: |
+        Choose **pure** if the topic alone gives the answer, such as finding fluorine in a formula.
+        Choose **mixed** if you also need other data, such as a measured spectrum for that formula.
+      options:
+        - pure
+        - mixed
     validations:
       required: true
   - type: input
