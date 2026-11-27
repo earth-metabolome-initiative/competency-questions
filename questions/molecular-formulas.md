@@ -62,3 +62,11 @@ Which entities produce a fragment assigned the composition of glucose that, when
 **Answer.** One row per entity and linked acquisition path, with the scan and peak IDs in order, isolations, observed mass-to-charge ratios, assigned ion formulas and charges, assignment sources, and loss mass error in Da. Report any independent sugar identification separately.
 
 **Measured example.** In [Nguan et al., Figure 8b](https://pmc.ncbi.nlm.nih.gov/articles/PMC11613545/#fig8), a raffinose fragmentation sequence yields a sodiated hexose fragment at nominal `m/z` 203. Its product spectrum includes nominal `m/z` 185, consistent with `[C6H12O6+Na]+ → [C6H10O5+Na]+`. The authors assign the isolated hexose to **galactose**. It qualifies for the composition question even though it would be excluded from a glucose-specific structure search.
+
+## CQ-0017
+
+Which formulas contain at least one fluorine (F) atom ?
+
+**Example.** PFAS are retruned, water isnt.
+
+[Review question](https://github.com/earth-metabolome-initiative/competency-questions/issues/3)
