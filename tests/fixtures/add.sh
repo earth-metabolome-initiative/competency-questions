@@ -14,7 +14,7 @@ printf '%s\n' "$number" | tee "$REGISTRY"
 SCRIPT
 chmod +x "$sandbox/bin/gh"
 for checkout in first second; do
-    printf '# Formulas\n\n## CQ-0014\n\nOriginal question?\n' > "$sandbox/$checkout/questions/molecular-formulas.md"
+    printf '# Formulas\n\n## Original question?\n\n### CQ-0014\n' > "$sandbox/$checkout/questions/molecular-formulas.md"
 done
 cd "$sandbox/first"
 file=questions/molecular-formulas.md
@@ -27,11 +27,11 @@ cmp "$file" "$sandbox/original"
 "$CATALOGUE" add molecular-formulas 'Exactly two chlorine atoms?' > "$sandbox/result"
 grep -F 'CQ-0015' "$sandbox/result"
 grep -F "$file" "$sandbox/result"
-grep -Fx 'Original question?' "$file"
-grep -Fx '## CQ-0015' "$file"
-grep -Fx 'Exactly two chlorine atoms?' "$file"
+grep -Fx '## Original question?' "$file"
+grep -Fx '### CQ-0015' "$file"
+grep -Fx '## Exactly two chlorine atoms?' "$file"
 grep -F 'https://github.com/earth-metabolome-initiative/competency-questions/issues/1' "$file"
 cd "$sandbox/second"
 "$CATALOGUE" add molecular-formulas 'Exactly two bromine atoms?'
-grep -Fx '## CQ-0016' "$file"
+grep -Fx '### CQ-0016' "$file"
 if grep -Fq 'CQ-0015' "$file"; then exit 1; fi

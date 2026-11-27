@@ -1,8 +1,8 @@
 # Molecular formulas and fragment assignments
 
-## CQ-0007
+## Which chemical entities have a reported molecular formula containing at least one fluorine atom?
 
-Which chemical entities have a reported molecular formula containing at least one fluorine atom?
+### CQ-0007
 
 **Scope.** `mixed` — molecular formulas and analyte assignment records. The formula supplies the count. The assignment identifies the analyte component, status and source.
 
@@ -12,9 +12,9 @@ Which chemical entities have a reported molecular formula containing at least on
 
 [Feng et al.](https://doi.org/10.1039/C9SC03374B) reported two glucosylated fluorometabolites from *Streptomyces calvus* and characterized them by high-resolution MS and fluorine NMR.
 
-## CQ-0014
+## Among complete analyte formula assignments, which have at least four nitrogen atoms and no sulfur atoms?
 
-Among complete analyte formula assignments, which have at least four nitrogen atoms and no sulfur atoms?
+### CQ-0014
 
 **Scope.** `pure` — molecular formulas. Supply the complete, resolved analyte formulas keyed by assignment ID.
 
@@ -24,9 +24,9 @@ Among complete analyte formula assignments, which have at least four nitrogen at
 
 **Examples.** [Caffeine, `C8H10N4O2` (PubChem CID 2519)](https://pubchem.ncbi.nlm.nih.gov/compound/2519), qualifies at exactly four nitrogen atoms. An assignment with two unlabeled nitrogen atoms and two nitrogen-15 atoms also reaches four. `C8H10N4OS` fails the sulfur condition and `C8H11N3O2` fails the nitrogen condition.
 
-## CQ-0010
+## Which molecular formulas reported in this dataset could account for a measured monoisotopic precursor peak under the specified adduct hypotheses?
 
-Which molecular formulas reported in this dataset could account for a measured monoisotopic precursor peak under the specified adduct hypotheses?
+### CQ-0010
 
 **Scope.** `mixed` — molecular formulas, measured precursor peaks and entity–formula assignments. The formula-only part is a neutral-mass range search for each supplied adduct.
 
@@ -36,9 +36,9 @@ Which molecular formulas reported in this dataset could account for a measured m
 
 [Kind and Fiehn](https://pmc.ncbi.nlm.nih.gov/articles/PMC1851972/) investigated ambiguity in formula assignments from accurate masses and described why the adduct matters when relating a peak to a neutral formula.
 
-## CQ-0011
+## Before searching spectra, which entities have enough atoms to produce an ion with the composition of glucose and accommodate a neutral loss of water?
 
-Before searching spectra, which entities have enough atoms to produce an ion with the composition of glucose and accommodate a neutral loss of water?
+### CQ-0011
 
 **Scope.** `pure` — molecular formulas. The precursor formula, ion form and loss relationship are inputs to an atom-count calculation.
 
@@ -51,9 +51,9 @@ Before searching spectra, which entities have enough atoms to produce an ion wit
 
 [Böcker and Dührkop](https://doi.org/10.1186/s13321-016-0116-8) distinguish modeled fragmentation trees with formula-labeled losses from experimental trees recording which ion was isolated at each stage.
 
-## CQ-0012
+## Which entities have a tandem mass spectrum where the same isolated precursor gives both a product assigned the composition of glucose and a product consistent with loss of water?
 
-Which entities have a tandem mass spectrum where the same isolated precursor gives both a product assigned the composition of glucose and a product consistent with loss of water?
+### CQ-0012
 
 **Scope.** `mixed` — molecular formulas and mass spectrometry. Requires assigned peaks from the same precursor and product-ion scan.
 
@@ -63,9 +63,9 @@ Which entities have a tandem mass spectrum where the same isolated precursor giv
 
 **Measured example.** [The maltose spectra in Figure 1B–C](https://pmc.ncbi.nlm.nih.gov/articles/PMC5882935/#Fig1) show sodiated maltose, `[C12H22O11+Na]+` at nominal `m/z` 365, giving products at nominal `m/z` 203 and 347. The former fits `[C6H12O6+Na]+`. The latter fits `[C12H20O10+Na]+`, the precursor minus water. These nominal peak labels are distinct from high-resolution mass measurements.
 
-## CQ-0013
+## Which entities produce a fragment assigned the composition of glucose that, when isolated in a later MS stage, itself gives a water-loss product?
 
-Which entities produce a fragment assigned the composition of glucose that, when isolated in a later MS stage, itself gives a water-loss product?
+### CQ-0013
 
 **Scope.** `mixed` — molecular formulas and mass spectrometry. Requires the recorded link from an isolated product ion to its child scan.
 
@@ -75,9 +75,9 @@ Which entities produce a fragment assigned the composition of glucose that, when
 
 **Measured example.** In [Nguan et al., Figure 8b](https://pmc.ncbi.nlm.nih.gov/articles/PMC11613545/#fig8), a raffinose fragmentation sequence yields a sodiated hexose fragment at nominal `m/z` 203. Its product spectrum includes nominal `m/z` 185, consistent with `[C6H12O6+Na]+ → [C6H10O5+Na]+`. The authors assign the isolated hexose to **galactose**. It qualifies for the composition question even though it would be excluded from a glucose-specific structure search.
 
-## CQ-0017
+## Which molecular formulas contain at least one fluorine atom?
 
-Which molecular formulas contain at least one fluorine atom?
+### CQ-0017
 
 **Scope.** `pure` — molecular formulas. Count fluorine in the supplied formula without assigning atoms to analyte or counterion components.
 

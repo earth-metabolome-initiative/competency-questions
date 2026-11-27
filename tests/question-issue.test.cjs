@@ -24,7 +24,7 @@ test('an unrelated issue, a legacy command issue or a malformed form makes no wr
 
 test('a submission and a retry after a PR failure produce one entry and one linked proposal', async () => {
   const branch = 'question/CQ-0016';
-  const contents = new Map([['snapshot', '# Formulas\n\n## CQ-0007\n\nFluorine?\n']]);
+  const contents = new Map([['snapshot', '# Formulas\n\n## Fluorine?\n\n### CQ-0007\n']]);
   let proposals = [], attempts = 0, edits = 0;
   const client = {
     pulls: {
@@ -59,7 +59,7 @@ test('a submission and a retry after a PR failure produce one entry and one link
   await submit(client, context);
   assert.equal(edits, 1);
   assert.equal(proposals.length, 1);
-  assert.match(contents.get(branch), /Fluorine\?\n\n## CQ-0016\n\nWhich formulas contain sodium\?/);
+  assert.match(contents.get(branch), /### CQ-0007\n\n## Which formulas contain sodium\?\n\n### CQ-0016\n/);
   assert.match(contents.get(branch), /NaCl should match\. HCl should not\./);
   assert.match(contents.get(branch), /https:\/\/github\.com\/example\/catalogue\/issues\/2/);
   assert.doesNotMatch(contents.get('snapshot'), /sodium/);

@@ -37,10 +37,10 @@ module.exports = async function submit(client, context) {
 
   const { data: file } = await client.repos.getContent({ owner, repo, path, ref: branch });
   const contents = Buffer.from(file.content, 'base64').toString('utf8');
-  const heading = `## ${identifier}`;
-  if (!contents.split(/\r?\n/).includes(heading)) {
+  const subtitle = `### ${identifier}`;
+  if (!contents.split(/\r?\n/).includes(subtitle)) {
     const link = `https://github.com/${owner}/${repo}/issues/${issue.number}`;
-    const entry = `${heading}\n\n${plainText(question)}\n\n**Example.** ${plainText(example)}\n\n[Review question](${link})\n`;
+    const entry = `## ${plainText(question)}\n\n${subtitle}\n\n**Example.** ${plainText(example)}\n\n[Review question](${link})\n`;
     await client.repos.createOrUpdateFileContents({ owner, repo, path, branch, sha: file.sha,
       message: `Add ${identifier} to ${setName}`, content: Buffer.from(`${contents.trimEnd()}\n\n${entry}`).toString('base64') });
   }

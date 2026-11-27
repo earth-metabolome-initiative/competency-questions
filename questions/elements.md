@@ -3,9 +3,9 @@
 <a id="cq-0007"></a>
 For fluorine in an analyte formula, see [`CQ-0007` in the molecular-formulas set](molecular-formulas.md#cq-0007).
 
-## CQ-0008
+## Which LC–MS features have a resolved isotope doublet consistent with one bromine atom?
 
-Which LC–MS features have a resolved isotope doublet consistent with one bromine atom?
+### CQ-0008
 
 **Scope.** `mixed` — element isotope data and LC–MS measurements. Coelution, peak spacing and intensity ratio require measured peaks.
 
@@ -15,9 +15,9 @@ Which LC–MS features have a resolved isotope doublet consistent with one bromi
 
 The [NIST bromine isotope table](https://physics.nist.gov/cgi-bin/Compositions/stand_alone.pl?ele=Br) supplies the isotope masses and abundances. [A fungal natural-products study](https://doi.org/10.1021/jo2009593) used isotope patterns to select halogenated metabolites for isolation and structural analysis.
 
-## CQ-0009
+## Which metabolites have isotope-labeling evidence for exactly six carbon atoms?
 
-Which metabolites have isotope-labeling evidence for exactly six carbon atoms?
+### CQ-0009
 
 **Scope.** `mixed` — element isotope data and paired isotope-labeling experiments. The expected mass shift is calculable, while the observed endpoints and their pairing require feature records.
 

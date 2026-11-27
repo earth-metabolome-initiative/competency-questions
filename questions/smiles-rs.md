@@ -1,8 +1,8 @@
 # Comparing reported structures with `SMILES`
 
-## CQ-0001
+## Which organism reports describe the same molecule as my quercetin aglycone reference, even when two catalogues draw its rings differently?
 
-Which organism reports describe the same molecule as my quercetin aglycone reference, even when two catalogues draw its rings differently?
+### CQ-0001
 
 **Scope.** `mixed` — molecular graphs and organism–publication records. Graph equality alone cannot identify an occurrence report.
 
@@ -12,9 +12,9 @@ Which organism reports describe the same molecule as my quercetin aglycone refer
 
 **Sources.** [Daylight’s `SMILES` specification](https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html) illustrates equivalent ring and hydrogen spellings and separately encoded tautomers. [Rutz et al.](https://pmc.ncbi.nlm.nih.gov/articles/PMC9135406/) link structures to organisms through cited reports in LOTUS.
 
-## CQ-0002
+## Among cacao records with the connectivity of (+)-catechin, which assign that stereoisomer, which assign a different one, and which leave the assignment open?
 
-Among cacao records with the connectivity of (+)-catechin, which assign that stereoisomer, which assign a different one, and which leave the assignment open?
+### CQ-0002
 
 **Scope.** `mixed` — molecular graphs, sample records and experimental stereochemical assignments. The drawn stereocentres support the graph comparison.
 
@@ -24,9 +24,9 @@ Among cacao records with the connectivity of (+)-catechin, which assign that ste
 
 **Sources.** [Hurst et al.](https://doi.org/10.1186/1752-153X-5-53) resolved (−)-epicatechin and (+)-catechin in ripe cacao beans and reported (−)-catechin after processing. [Daylight’s isomeric `SMILES` rules](https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html) explain how local atom order determines the meaning of `@` and `@@`.
 
-## CQ-0003
+## Which reference materials contain the same berberine cation as my standard, and which counterions or solvates distinguish the materials I could compare?
 
-Which reference materials contain the same berberine cation as my standard, and which counterions or solvates distinguish the materials I could compare?
+### CQ-0003
 
 **Scope.** `mixed` — molecular graphs and material descriptions. A component match finds the cation. The material record supplies the reported counterion, solvent and stoichiometry.
 

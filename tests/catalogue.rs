@@ -7,12 +7,16 @@ fn every_question_has_one_address_and_a_nonempty_answer_contract() {
     let mut names = BTreeSet::new();
     for &(name, document) in QUESTION_SETS {
         assert!(names.insert(name), "duplicate set {name}");
-        let mut sections = document
-            .lines()
-            .filter_map(|line| line.strip_prefix("## "))
-            .peekable();
+        let mut sections = document.split("\n## ").skip(1).peekable();
         assert!(sections.peek().is_some(), "empty set {name}");
-        for identifier in sections {
+        for section in sections {
+            let mut lines = section.lines();
+            let title = lines.next().expect("expected a question title");
+            assert!(!title.trim().is_empty());
+            let identifier = lines
+                .find(|line| !line.is_empty())
+                .and_then(|line| line.strip_prefix("### "))
+                .expect("expected an ID subtitle");
             let digits = identifier
                 .strip_prefix("CQ-")
                 .expect("expected CQ- heading");
@@ -22,7 +26,8 @@ fn every_question_has_one_address_and_a_nonempty_answer_contract() {
                 "duplicate question {identifier}"
             );
             let body = question(identifier).expect("unresolvable question");
-            assert!(!body.is_empty() && !body.contains("\n## "), "{identifier}");
+            assert_eq!(body.lines().next(), Some(title));
+            assert!(!body.contains("\n## "), "{identifier}");
         }
     }
     assert_eq!(question("CQ-"), None);

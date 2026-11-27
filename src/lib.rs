@@ -17,7 +17,7 @@ pub fn question(identifier: &str) -> Option<&'static str> {
         .iter()
         .flat_map(|(_, document)| document.split("\n## ").skip(1))
         .find_map(|section| {
-            let (heading, body) = section.split_once('\n')?;
-            (heading.trim_end_matches('\r') == identifier).then(|| body.trim())
+            let subtitle = section.lines().skip(1).find(|line| !line.is_empty())?;
+            (subtitle.strip_prefix("### ") == Some(identifier)).then(|| section.trim_end())
         })
 }
