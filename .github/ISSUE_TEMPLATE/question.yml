@@ -1,0 +1,28 @@
+name: Add a question
+description: Suggest one question for the chemistry catalogue.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Write your question in the title box.** For example, “Which formulas contain sodium?” or “Which molecules contain a ring made of six carbon atoms?”
+
+        Pick a topic and give one example below. GitHub will give your question a number and ask someone to review it. No code needed.
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Pick a topic
+      options:
+        - Counting atoms in a formula
+        - Comparing whole molecules
+        - Finding part of a molecule
+        - Elements and their isotopes
+    validations:
+      required: true
+  - type: input
+    id: example
+    attributes:
+      label: Give one example
+      description: Name something the answer should include or leave out.
+      placeholder: Table salt (NaCl) should match. Water (H2O) should not.
+    validations:
+      required: true

@@ -1,0 +1,29 @@
+name: Suggest a catalogue question
+on:
+  issues:
+    types: [opened]
+
+permissions: {}
+
+concurrency:
+  group: question-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  propose:
+    if: startsWith(github.event.issue.body, '### Pick a topic')
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            const submit = require('./.github/scripts/question-issue.cjs');
+            await submit(github.rest, context);

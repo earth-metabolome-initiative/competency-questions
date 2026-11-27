@@ -13,13 +13,36 @@ What should a natural-products researcher be able to retrieve from a dataset? Ea
 
 The questions suggest different indexes. [`CQ-0007`](questions/molecular-formulas.md#cq-0007) asks which analyte formulas contain fluorine. [`CQ-0014`](questions/molecular-formulas.md#cq-0014) also needs atom counts to retrieve formulas with at least four nitrogen atoms and no sulfur. [`CQ-0013`](questions/molecular-formulas.md#cq-0013) needs a link from an isolated product ion to the scan of its products. An index of peak masses alone cannot recover that acquisition history.
 
+## Add a question
+
+1. Open **[Add a question](https://github.com/earth-metabolome-initiative/competency-questions/issues/new?template=question.yml)** on GitHub. Write your question in the title box. Try “Which formulas contain sodium?”
+2. Pick a topic. For this question, choose **Counting atoms in a formula**.
+3. Give one example. You could write “Table salt (NaCl) should match. Water (H2O) should not.” Click **Create** to send it.
+
+GitHub gives your question a number and opens a **pull request**, a proposed change to the catalogue. Follow the link on your issue to see the question and its example. You can suggest changes there. When a reviewer accepts and merges the change, the question joins the catalogue and GitHub closes the issue. You do not need to install anything or choose an ID.
+
+<details>
+<summary>Prefer the terminal?</summary>
+
+Run the following from the root of a writable checkout only if you want to submit the example.
+
+```sh
+cargo run -- add molecular-formulas "Which chemical entities contain exactly two chlorine atoms?"
+```
+
+The command requires Rust and Cargo, GNU `timeout`, and a signed-in GitHub CLI (`gh`). It opens a public tracking issue and adds the question to a file in your checkout. This terminal route leaves the pull request to you. Add your example to the printed file, then commit it, push your branch and open a pull request.
+
+</details>
+
+Both routes use the issue number plus 14 as the permanent question number, keeping the original fourteen IDs. Gaps are fine. If submission is interrupted, look for your issue before trying again.
+
 ## Cite or amend a question
 
 Use [`CQ-0007`](questions/molecular-formulas.md#cq-0007) to discuss the fluorine question. Use `questions/molecular-formulas.md` to assign the whole set, or list individual IDs across sets. A question has one home even when answering it requires several crates. Search the checkout with `git grep --untracked -n '^## CQ-0007$' -- questions`.
 
 For an exact handoff, give the recipient the repository location and full commit hash alongside the IDs or set path. In that checkout, `git show <commit>:questions/molecular-formulas.md` retrieves that revision of the set. A bare ID follows the question through wording edits. For an uncommitted draft, share the working files with the recipient.
 
-To comment, quote the ID and give an example that should match or should be excluded. To add a question, use the next unused `CQ-` number with four digits as its own second-level heading. Keep the ID and set path through clarifications. A different retrieval task gets a new ID. Leave a forwarding note under a retired ID and never reuse it.
+To comment, quote the ID and give an example that should match or should be excluded. A different retrieval task gets a new ID. Leave a forwarding note under a retired ID.
 
 ```rust
 use competency_questions::{question, QUESTION_SETS};
