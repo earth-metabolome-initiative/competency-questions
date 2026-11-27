@@ -13,9 +13,10 @@ function plainText(text) {
 module.exports = async function submit(client, context) {
   const { issue, repository } = context.payload;
   const fields = (issue.body ?? '').split(/\r?\n/).map(line => line.trim()).filter(Boolean);
-  const [topicHeading, topic, exampleHeading, example] = fields;
+  const [topicHeading, topic, scopeHeading, scope, exampleHeading, example] = fields;
   const setName = topics.get(topic);
-  if (fields.length !== 4 || topicHeading !== '### Pick a topic' || !setName ||
+  if (fields.length !== 6 || topicHeading !== '### Pick a topic' || !setName ||
+      scopeHeading !== '### Scope' || (scope !== 'pure' && scope !== 'mixed') ||
       exampleHeading !== '### Give one example' || example === '_No response_') return;
   const question = issue.title.trim();
   if (!question || /\p{Cc}/u.test(question) || /\p{Cc}/u.test(example)) return;
@@ -40,10 +41,10 @@ module.exports = async function submit(client, context) {
   const subtitle = `### ${identifier}`;
   if (!contents.split(/\r?\n/).includes(subtitle)) {
     const link = `https://github.com/${owner}/${repo}/issues/${issue.number}`;
-    const entry = `## ${plainText(question)}\n\n${subtitle}\n\n**Example.** ${plainText(example)}\n\n[Review question](${link})\n`;
+    const entry = `## ${plainText(question)}\n\n${subtitle}\n\n**Scope.** \`${scope}\`\n\n**Example.** ${plainText(example)}\n\n[Review question](${link})\n`;
     await client.repos.createOrUpdateFileContents({ owner, repo, path, branch, sha: file.sha,
       message: `Add ${identifier} to ${setName}`, content: Buffer.from(`${contents.trimEnd()}\n\n${entry}`).toString('base64') });
   }
   await client.pulls.create({ owner, repo, base, head: branch, title: `Add ${identifier} to ${setName}`,
-    body: `Please review the question and its example.\n\nCloses #${issue.number}` });
+    body: `Please review the question, its scope and its example. For a mixed question, name the extra data in the scope line before merging.\n\nCloses #${issue.number}` });
 };

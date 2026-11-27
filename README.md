@@ -25,7 +25,8 @@ git grep -B 4 -F '**Scope.** `pure`' -- questions/molecular-formulas.md
 
 1. Open **[Add a question](https://github.com/earth-metabolome-initiative/competency-questions/issues/new?template=question.yml)** on GitHub. Write your question in the title box. Try “Which formulas contain sodium?”
 2. Pick a topic. For this question, choose **Molecular formulas (MF)**.
-3. Give one example. You could write “Table salt (NaCl) should match. Water (H2O) should not.” Click **Create** to send it.
+3. Choose **Scope**. Select `pure` for the sodium question because the formula gives the answer. Select `mixed` if the answer also needs other data, such as a measured spectrum. The pull request includes your choice.
+4. Give one example. You could write “Table salt (NaCl) should match. Water (H2O) should not.” Click **Create** to send it.
 
 GitHub gives your question a number and opens a **pull request**, a proposed change to the catalogue. Follow the link on your issue to see the question and its example. You can suggest changes there. When a reviewer accepts and merges the change, the question joins the catalogue and GitHub closes the issue. You do not need to install anything or choose an ID.
 
