@@ -15,17 +15,26 @@ The questions suggest different indexes. [`CQ-0007`](questions/molecular-formula
 
 ## Add a question
 
-From the root of a writable checkout, choose a set from the table above and pass the question as one quoted argument. For example, run this **only if you want to submit this question**.
+1. Open **[Add a question](https://github.com/earth-metabolome-initiative/competency-questions/issues/new?template=question.yml)** on GitHub. Write your question in the title box. Try “Which formulas contain sodium?”
+2. Pick a topic. For this question, choose **Counting atoms in a formula**.
+3. Give one example. You could write “Table salt (NaCl) should match. Water (H2O) should not.” Click **Create** to send it.
+
+GitHub gives your question a number and opens a **pull request**, a proposed change to the catalogue. Follow the link on your issue to see the question and its example. You can suggest changes there. When a reviewer accepts and merges the change, the question joins the catalogue and GitHub closes the issue. You do not need to install anything or choose an ID.
+
+<details>
+<summary>Prefer the terminal?</summary>
+
+Run the following from the root of a writable checkout only if you want to submit the example.
 
 ```sh
 cargo run -- add molecular-formulas "Which chemical entities contain exactly two chlorine atoms?"
 ```
 
-You need Rust and Cargo, GNU `timeout`, network access, and the GitHub CLI (`gh`) signed in to an account that can open issues in the [EMI catalogue](https://github.com/earth-metabolome-initiative/competency-questions/issues). The command immediately posts the question and set **publicly** to that tracker, including when run from a fork. It appends the question to the local set file and prints its permanent ID, file path and issue link. It does not commit or push the file.
+The command requires Rust and Cargo, GNU `timeout`, and a signed-in GitHub CLI (`gh`). It opens a public tracking issue and adds the question to a file in your checkout. This terminal route leaves the pull request to you. Add your example to the printed file, then commit it, push your branch and open a pull request.
 
-Share the ID or issue link as soon as the command succeeds. In the printed file, add what counts as a match, what one result should contain, and any supporting example or citation. Submit that file through the usual review process. To clarify an existing question, edit its entry and keep its ID.
+</details>
 
-GitHub allocates issue numbers centrally across branches and clones. The question number is the issue number plus 14, preserving `CQ-0001` through `CQ-0014`. For example, issue 1 gives `CQ-0015`. Other issues and pull requests can leave gaps. Never fill gaps or reuse a retired ID. If a request is interrupted, check the tracker for the question before retrying. If the issue exists, use its number to complete the local entry with the reserved ID and issue link.
+Both routes use the issue number plus 14 as the permanent question number, keeping the original fourteen IDs. Gaps are fine. If submission is interrupted, look for your issue before trying again.
 
 ## Cite or amend a question
 
