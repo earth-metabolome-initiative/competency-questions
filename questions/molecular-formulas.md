@@ -4,6 +4,8 @@
 
 Which chemical entities have a reported molecular formula containing at least one fluorine atom?
 
+**Scope.** `mixed` — molecular formulas and analyte assignment records. The formula supplies the count. The assignment identifies the analyte component, status and source.
+
 **Match.** Use the formula assigned to the analyte itself, excluding counterions, solvents and measurement adducts. Sum the counts of atoms with atomic number 9 across all isotopes. A positive count qualifies wherever `F` appears in the parsed formula. `Fe` is iron and contributes zero. If the analyte formula is missing or its component cannot be separated, its fluorine content is unknown.
 
 **Answer.** One row per entity and matching formula assignment, with the entity ID, reported formula, fluorine count, assignment status and source. Competing assignments remain distinguishable.
@@ -12,17 +14,21 @@ Which chemical entities have a reported molecular formula containing at least on
 
 ## CQ-0014
 
-Which chemical entities have a reported molecular formula containing at least four nitrogen atoms and no sulfur atoms?
+Among complete analyte formula assignments, which have at least four nitrogen atoms and no sulfur atoms?
+
+**Scope.** `pure` — molecular formulas. Supply the complete, resolved analyte formulas keyed by assignment ID.
 
 **Match.** Count atoms across isotopes in the same complete analyte formula, excluding counterions, solvents and measurement adducts. Require a nitrogen count of four or more and a sulfur count of zero. A missing or partial formula cannot establish the absence of sulfur.
 
-**Answer.** One row per entity and matching formula assignment, with the entity ID, reported formula, nitrogen and sulfur counts, assignment status and source.
+**Answer.** Return each matching assignment ID, formula and nitrogen and sulfur counts. The caller can use the ID to retrieve the entity, assignment status and source separately.
 
-**Examples.** [Caffeine, `C8H10N4O2` (PubChem CID 2519)](https://pubchem.ncbi.nlm.nih.gov/compound/2519), qualifies at exactly four nitrogen atoms. As formula-only counterexamples, `C8H10N4OS` fails the sulfur condition and `C8H11N3O2` fails the nitrogen condition.
+**Examples.** [Caffeine, `C8H10N4O2` (PubChem CID 2519)](https://pubchem.ncbi.nlm.nih.gov/compound/2519), qualifies at exactly four nitrogen atoms. An assignment with two unlabeled nitrogen atoms and two nitrogen-15 atoms also reaches four. `C8H10N4OS` fails the sulfur condition and `C8H11N3O2` fails the nitrogen condition.
 
 ## CQ-0010
 
 Which molecular formulas reported in this dataset could account for a measured monoisotopic precursor peak under the specified adduct hypotheses?
+
+**Scope.** `mixed` — molecular formulas, measured precursor peaks and entity–formula assignments. The formula-only part is a neutral-mass range search for each supplied adduct.
 
 **Match.** For each distinct neutral formula and allowed adduct, calculate the monoisotopic ion mass using the declared isotope masses and charge carrier, then divide by the absolute charge. Keep every pair whose absolute error is within the supplied tolerance, inclusive. For a tolerance in ppm, use the signed error `10⁶ × (observed − calculated) / calculated`, with both values expressed as mass-to-charge ratios. A different adduct is a separate hypothesis.
 
@@ -33,6 +39,8 @@ Which molecular formulas reported in this dataset could account for a measured m
 ## CQ-0011
 
 Before searching spectra, which entities have enough atoms to produce an ion with the composition of glucose and accommodate a neutral loss of water?
+
+**Scope.** `pure` — molecular formulas. The precursor formula, ion form and loss relationship are inputs to an atom-count calculation.
 
 **Match.** Start with each entity’s neutral formula and a specified ion form, such as `[M+Na]+`. Let `P` be the resulting precursor ion composition, `G` the ion formed from `C6H12O6` with the same carrier and charge, and `W` neutral `H2O`. For this screen assume unlabeled analytes and retention of the carrier. Require `P − G` to have no negative atom counts and at least one positive count. Test the specified origin of the water loss separately.
 
@@ -47,6 +55,8 @@ Before searching spectra, which entities have enough atoms to produce an ion wit
 
 Which entities have a tandem mass spectrum where the same isolated precursor gives both a product assigned the composition of glucose and a product consistent with loss of water?
 
+**Scope.** `mixed` — molecular formulas and mass spectrometry. Requires assigned peaks from the same precursor and product-ion scan.
+
 **Match.** Follow an entity’s precursor assignment to its product-ion scan. Require a measured product with an existing ion-formula assignment corresponding to neutral `C6H12O6`, and a measured product whose assigned ion formula is the precursor ion formula minus `H2O` with unchanged charge. Check the measured transition against a declared tolerance. For ordinary water, the expected neutral monoisotopic loss is 18.010565 Da, so the expected mass-to-charge separation is 18.010565 divided by the absolute charge. Count a single product for both conditions only when its assignment satisfies both, and flag that case. Exclude ambiguous co-isolation where the products cannot be assigned to the same precursor.
 
 **Answer.** One row per entity, precursor and qualifying product pair, with spectrum and peak IDs, measured mass-to-charge ratios, ion formulas, charges, assignment sources and loss mass error in Da. Two products in the same scan provide no evidence that the glucose-composition product lost water itself.
@@ -57,6 +67,8 @@ Which entities have a tandem mass spectrum where the same isolated precursor giv
 
 Which entities produce a fragment assigned the composition of glucose that, when isolated in a later MS stage, itself gives a water-loss product?
 
+**Scope.** `mixed` — molecular formulas and mass spectrometry. Requires the recorded link from an isolated product ion to its child scan.
+
 **Match.** Follow the acquisition links from the entity’s precursor to the measured fragment and from that fragment’s isolation to its own product scan. Require an existing assignment corresponding to neutral `C6H12O6` for the isolated fragment. Require its measured product to retain the charge and carrier, differ in assigned composition by exactly `H2O`, and agree with the predicted mass-to-charge separation within the specified tolerance. A computed fragmentation tree or two peaks in one product spectrum do not establish which ion was isolated.
 
 **Answer.** One row per entity and linked acquisition path, with the scan and peak IDs in order, isolations, observed mass-to-charge ratios, assigned ion formulas and charges, assignment sources, and loss mass error in Da. Report any independent sugar identification separately.
@@ -65,8 +77,10 @@ Which entities produce a fragment assigned the composition of glucose that, when
 
 ## CQ-0017
 
-Which formulas contain at least one fluorine (F) atom ?
+Which molecular formulas contain at least one fluorine atom?
 
-**Example.** PFAS are retruned, water isnt.
+**Scope.** `pure` — molecular formulas. Count fluorine in the supplied formula without assigning atoms to analyte or counterion components.
+
+**Example.** `C2HF3O2` matches. `H2O` and `Fe2O3` do not.
 
 [Review question](https://github.com/earth-metabolome-initiative/competency-questions/issues/3)
