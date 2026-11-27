@@ -1,0 +1,8 @@
+[package]
+name = "competency-questions"
+version = "0.1.0"
+edition = "2024"
+description = "Reviewable competency questions for natural-products chemistry and mass spectrometry"
+publish = false
+
+[dependencies]
