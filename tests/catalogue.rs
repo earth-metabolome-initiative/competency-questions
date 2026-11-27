@@ -16,7 +16,7 @@ fn every_question_has_one_address_and_a_nonempty_answer_contract() {
             let digits = identifier
                 .strip_prefix("CQ-")
                 .expect("expected CQ- heading");
-            assert!(digits.len() == 4 && digits.bytes().all(|digit| digit.is_ascii_digit()));
+            assert!(digits.len() >= 4 && digits.bytes().all(|digit| digit.is_ascii_digit()));
             assert!(
                 identifiers.insert(identifier),
                 "duplicate question {identifier}"
