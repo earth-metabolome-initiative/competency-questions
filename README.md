@@ -11,7 +11,15 @@ What should a natural-products researcher be able to retrieve from a dataset? Ea
 | [Elements](questions/elements.md) | [`elements_rs`](https://github.com/earth-metabolome-initiative/elements-rs) | Element and isotope evidence |
 | [Molecular formulas (MF)](questions/molecular-formulas.md) | [`molecular-formulas`](https://github.com/earth-metabolome-initiative/molecular-formulas) | Composition, candidate formulas and spectral assignments |
 
-The questions suggest different indexes. [`CQ-0007`](questions/molecular-formulas.md#cq-0007) asks which analyte formulas contain fluorine. [`CQ-0014`](questions/molecular-formulas.md#cq-0014) also needs atom counts to retrieve formulas with at least four nitrogen atoms and no sulfur. [`CQ-0013`](questions/molecular-formulas.md#cq-0013) needs a link from an isolated product ion to the scan of its products. An index of peak masses alone cannot recover that acquisition history.
+Each reviewed question has one **Scope** tag. `pure` means the home crate's data and the supplied query parameters determine every match and answer field. Input record IDs may pass through unchanged. For SMARTS, the normal inputs are a pattern and target molecular graphs. A paper cited to motivate a question does not count as extra data.
+
+`mixed` means the answer also needs another kind of data. The tag names it. For example, a question that uses a SMILES structure **and** an observed fragment needs molecular graphs and mass spectrometry. Keep it in one topic file under its original ID. Add or check the scope line when reviewing a new draft, before merging it.
+
+For a formula-only indexing workload, compare [`CQ-0017`](questions/molecular-formulas.md#cq-0017) (fluorine present), [`CQ-0014`](questions/molecular-formulas.md#cq-0014) (atom counts across isotopes) and [`CQ-0011`](questions/molecular-formulas.md#cq-0011) (composition feasibility). [`CQ-0013`](questions/molecular-formulas.md#cq-0013) also needs the experimental isolation history. To list the formula-only IDs and their questions, run
+
+```sh
+git grep -B 4 -F '**Scope.** `pure`' -- questions/molecular-formulas.md
+```
 
 ## Add a question
 

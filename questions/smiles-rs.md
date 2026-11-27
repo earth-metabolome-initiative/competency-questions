@@ -4,6 +4,8 @@
 
 Which organism reports describe the same molecule as my quercetin aglycone reference, even when two catalogues draw its rings differently?
 
+**Scope.** `mixed` — molecular graphs and organism–publication records. Graph equality alone cannot identify an occurrence report.
+
 **Answer.** One row per organism and original publication, with the reported compound name and all contributing catalogue record IDs. Two catalogues citing the same occurrence contribute one row. An independent publication on the same organism contributes another.
 
 **Match rule.** Supply the reference `SMILES`, each reported structure and its organism–publication link. Compare the whole molecular graph under one declared aromaticity convention. Ignore atom order, ring numbering and equivalent ways of writing attached hydrogens. Preserve isotopes, charges, bond orders outside aromatic systems, specified stereochemistry and all disconnected components. A quercetin glycoside, a different tautomer and a name-only report do not qualify. A structure match alone cannot establish an organism occurrence.
@@ -14,6 +16,8 @@ Which organism reports describe the same molecule as my quercetin aglycone refer
 
 Among cacao records with the connectivity of (+)-catechin, which assign that stereoisomer, which assign a different one, and which leave the assignment open?
 
+**Scope.** `mixed` — molecular graphs, sample records and experimental stereochemical assignments. The drawn stereocentres support the graph comparison.
+
 **Answer.** One row per source record with the sample or processing stage, citation, assignment at C-2 and C-3, and overall result. Keep the source’s stereochemical evidence alongside the drawn structure so a reviewer can distinguish a chiral separation from a name assigned to an unresolved peak.
 
 **Match rule.** Use a fully assigned (+)-catechin reference and align atoms by connectivity before comparing the two centres. Classify as different if any assigned centre conflicts, as matching if both agree, and as unresolved otherwise. If the source explicitly identifies a mixture, report it separately. An unmarked stereocentre establishes neither a racemate nor a specific enantiomer. Flag conflicts between the drawing and the source assignment for review.
@@ -23,6 +27,8 @@ Among cacao records with the connectivity of (+)-catechin, which assign that ste
 ## CQ-0003
 
 Which reference materials contain the same berberine cation as my standard, and which counterions or solvates distinguish the materials I could compare?
+
+**Scope.** `mixed` — molecular graphs and material descriptions. A component match finds the cation. The material record supplies the reported counterion, solvent and stoichiometry.
 
 **Answer.** Group records by the matched berberine cation. Within that group, give one row per material with its original record ID and citation, reported form, counterion, solvent and stoichiometry where known. Mark an unreported counterion or hydration state as unknown. A cation-only drawing cannot establish that the material was anhydrous.
 
