@@ -1,8 +1,8 @@
 const topics = new Map([
-  ['Counting atoms in a formula', 'molecular-formulas'],
-  ['Comparing whole molecules', 'smiles-rs'],
-  ['Finding part of a molecule', 'smarts'],
-  ['Elements and their isotopes', 'elements'],
+  ['SMILES', 'smiles-rs'],
+  ['SMARTS', 'smarts'],
+  ['Elements', 'elements'],
+  ['Molecular formulas (MF)', 'molecular-formulas'],
 ]);
 
 function plainText(text) {

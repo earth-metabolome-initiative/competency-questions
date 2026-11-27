@@ -7,15 +7,17 @@ body:
         **Write your question in the title box.** For example, “Which formulas contain sodium?” or “Which molecules contain a ring made of six carbon atoms?”
 
         Pick a topic and give one example below. GitHub will give your question a number and ask someone to review it. No code needed.
+
+        Related crates: [`smiles-rs`](https://github.com/earth-metabolome-initiative/smiles-rs), [`smarts-rs`](https://github.com/earth-metabolome-initiative/smarts-rs), [`elements_rs`](https://github.com/earth-metabolome-initiative/elements-rs) and [`molecular-formulas`](https://github.com/earth-metabolome-initiative/molecular-formulas).
   - type: dropdown
     id: topic
     attributes:
       label: Pick a topic
       options:
-        - Counting atoms in a formula
-        - Comparing whole molecules
-        - Finding part of a molecule
-        - Elements and their isotopes
+        - SMILES
+        - SMARTS
+        - Elements
+        - Molecular formulas (MF)
     validations:
       required: true
   - type: input
